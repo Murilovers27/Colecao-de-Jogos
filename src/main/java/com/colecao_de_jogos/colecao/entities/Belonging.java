@@ -1,5 +1,7 @@
 package com.colecao_de_jogos.colecao.entities;
 
+import java.util.Objects;
+
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
@@ -7,59 +9,50 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "tb_belonging")
 public class Belonging {
-    @EmbeddedId
-    private BelongingPk id = new BelongingPk();
-    private Integer position;
 
-    public Belonging(){}
+	@EmbeddedId
+	private BelongingPk id = new BelongingPk();
 
-    public Belonging(Game game, GameList list, Integer position) {
-        id.setGame(game);
-        id.setList(list);
-        this.position = position;
-    }
+	private Integer position;
 
-    public BelongingPk getId() {
-        return id;
-    }
+	public void setGame(Game game) {
+		id.setGame(game);
+	}
 
-    public void setId(BelongingPk id) {
-        this.id = id;
-    }
+	public Game getGame() {
+		return id.getGame();
+	}
 
-    public Integer getPosition() {
-        return position;
-    }
+	public void setList(GameList list) {
+		id.setList(list);
+	}
 
-    public void setPosition(Integer position) {
-        this.position = position;
-    }
+	public GameList getList() {
+		return id.getList();
+	}
 
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((id == null) ? 0 : id.hashCode());
-        return result;
-    }
+	public Integer getPosition() {
+		return position;
+	}
 
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj)
-            return true;
-        if (obj == null)
-            return false;
-        if (getClass() != obj.getClass())
-            return false;
-        Belonging other = (Belonging) obj;
-        if (id == null) {
-            if (other.id != null)
-                return false;
-        } else if (!id.equals(other.id))
-            return false;
-        return true;
-    }
-    
-    
-    
+	public void setPosition(Integer position) {
+		this.position = position;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Belonging other = (Belonging) obj;
+		return Objects.equals(id, other.id);
+	}
 }

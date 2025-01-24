@@ -1,42 +1,50 @@
 package com.colecao_de_jogos.colecao.dto;
 
 import com.colecao_de_jogos.colecao.entities.Game;
+import com.colecao_de_jogos.colecao.projections.GameMinProjection;
 
-public class GameMinDto {
-    private Long id;
-    private String title;
-    private Integer year;
-    private String imgUrl;
-    private String shortDescription;
+public class GameMinDTO {
 
-    public GameMinDto() {
-    }
+	private Long id;
+	private String title;
+	private Integer year;
+	private String imgUrl;
+	private String shortDescription;
+	
+	public GameMinDTO(Game entity) {
+		id = entity.getId();
+		title = entity.getTitle();
+		year = entity.getYear();
+		imgUrl = entity.getImgUrl();
+		shortDescription = entity.getShortDescription();
+	}
 
-    public GameMinDto(Game Entity) {
-        id = Entity.getId();
-        title = Entity.getTitle();
-        year = Entity.getYear();
-        imgUrl = Entity.getImgUrl();
-        shortDescription = Entity.getShortDescription();
-    }
+	public GameMinDTO(GameMinProjection projection) {
+		id = projection.getId();
+		title = projection.getTitle();
+		year = projection.getGameYear();
+		imgUrl = projection.getImgUrl();
+		shortDescription = projection.getShortDescription();
+	}
 
-    public Long getId() {
-        return id;
-    }
+	public Long getId() {
+		return id;
+	}
 
-    public String getTitle() {
-        return title;
-    }
+	public String getTitle() {
+		return title;
+	}
 
-    public Integer getYear() {
-        return year;
-    }
+	public Integer getYear() {
+		return year;
+	}
 
-    public String getImgUrl() {
-        return imgUrl;
-    }
+	public String getImgUrl() {
+		return imgUrl;
+	}
 
-    public String getShortDescription() {
-        return shortDescription;
-    } 
+	public String getShortDescription() {
+		return shortDescription;
+	}
 }
+
