@@ -1,8 +1,7 @@
 package com.colecao_de_jogos.colecao.dto;
 
-import org.springframework.beans.BeanUtils;
 
-import com.colecao_de_jogos.colecao.entities.Game;
+import com.colecao_de_jogos.colecao.entities.GameList;
 
 public class GameListDto {
 
@@ -11,8 +10,9 @@ public class GameListDto {
 
     public GameListDto(){}
 
-    public GameListDto(Game entity) {
-        BeanUtils.copyProperties(entity, this);
+    public GameListDto(GameList entity) {
+        id = entity.getId();
+        name = entity.getName();
     }
 
     public String getName() {

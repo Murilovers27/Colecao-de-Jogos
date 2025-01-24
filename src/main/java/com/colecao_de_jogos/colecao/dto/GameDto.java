@@ -75,6 +75,4 @@ public class GameDto {
     public void setLongDescription(String longDescription) {
         this.longDescription = longDescription;
     }
-    
-    
 }
