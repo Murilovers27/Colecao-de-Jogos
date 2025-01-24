@@ -11,14 +11,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.colecao_de_jogos.colecao.dto.GameListDTO;
 import com.colecao_de_jogos.colecao.dto.GameMinDTO;
-
 import com.colecao_de_jogos.colecao.services.GameListService;
+
 import com.colecao_de_jogos.colecao.services.GameService;
 
 @RestController
 @RequestMapping(value = "/lists")
 public class GameListController {
-
+	
 	@Autowired
 	private GameListService gameListService;
 	
@@ -39,9 +39,7 @@ public class GameListController {
 
 	@GetMapping(value = "/{listId}/games")
 	public List<GameMinDTO> findGames(@PathVariable Long listId) {
-		List<GameMinDTO> result = gameService.findByGameList(listId);
+		List<GameMinDTO> result = gameService.findBylist(listId);
 		return result;
 	}
-	
-	
 }

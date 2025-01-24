@@ -1,5 +1,8 @@
 package com.colecao_de_jogos.colecao.dto;
 
+
+
+
 import com.colecao_de_jogos.colecao.entities.Game;
 import com.colecao_de_jogos.colecao.projections.GameMinProjection;
 
@@ -15,17 +18,19 @@ public class GameMinDTO {
 		id = entity.getId();
 		title = entity.getTitle();
 		year = entity.getYear();
-		imgUrl = entity.getImgUrl();
+		imgUrl = 	entity.getImgUrl();
 		shortDescription = entity.getShortDescription();
 	}
 
 	public GameMinDTO(GameMinProjection projection) {
 		id = projection.getId();
 		title = projection.getTitle();
-		year = projection.getGameYear();
+		year = projection.getYear();
 		imgUrl = projection.getImgUrl();
 		shortDescription = projection.getShortDescription();
 	}
+
+	
 
 	public Long getId() {
 		return id;
